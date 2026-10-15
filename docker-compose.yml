@@ -1,0 +1,26 @@
+services:
+  medication-backend:
+    image: quanghoang22/it209_ci-cd_practice:latest
+    container_name: medication-backend-container
+    restart: always
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://medication-db:3306/medication_management_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Quang13102006
+    depends_on:
+      - medication-db
+
+  medication-db:
+    image: mysql:8.4
+    container_name: medication-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Quang13102006
+      MYSQL_DATABASE: medication_management_db
+    volumes:
+      - medication-db-data:/var/lib/mysql
+
+volumes:
+  medication-db-data:
