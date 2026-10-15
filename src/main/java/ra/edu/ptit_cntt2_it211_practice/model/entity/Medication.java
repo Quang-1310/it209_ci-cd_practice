@@ -26,5 +26,5 @@ public class Medication {
     private Status status;
 
     @Column(name = "is_delete")
-    private Boolean isDelete;  // biến xoá tạm
+    private Boolean isDelete;  // biến xoá tạm thời
 }
